@@ -1,13 +1,7 @@
-// var wordSorter = function(inputArray) {
-//   inputArray.forEach(function(word) {
-//     var currentTally = tally.word;
-//     var
-//   });
-// }
-
-
 var wordRanker = function(input) {
-  var inputSplit = input.split(" ");
+  var ignoredChars = /[+-.,!@#$%^&*();/|<>"']/g;
+  var cleanedInput = input.replace(ignoredChars, "").toLowerCase();  
+  var inputSplit = cleanedInput.split(" ");
   var holdingPen = [];
   var output = [];
   var tallyPen = [];
@@ -21,7 +15,6 @@ var wordRanker = function(input) {
     tally[word] = tally[word] + 1;
     }
   });
-
 
   holdingPen.forEach(function(word){
     var wordTally = tally[word];
@@ -42,3 +35,5 @@ var wordRanker = function(input) {
 
   return output;
 }
+
+$

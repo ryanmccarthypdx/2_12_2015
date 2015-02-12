@@ -15,4 +15,12 @@ describe("wordRanker", function() {
   it("returns multiple words in order of how often they appeared", function() {
     expect(wordRanker("dog cat cat cat cat")).to.eql(["cat", "dog"])
   });
+
+  it("ignores all punctuation", function() {
+    expect(wordRanker("i love you!, you@ love you&")).to.eql(["you", "love", "i"])
+  });
+
+  it("it ignores case sensitivity", function() {
+    expect(wordRanker("i HATE jaVaScriPT, haTe it!!(!)")).to.eql(["hate", "i", "javascript", "it"])
+  });
 });
