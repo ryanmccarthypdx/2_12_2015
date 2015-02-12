@@ -1,11 +1,44 @@
+// var wordSorter = function(inputArray) {
+//   inputArray.forEach(function(word) {
+//     var currentTally = tally.word;
+//     var
+//   });
+// }
+
+
 var wordRanker = function(input) {
   var inputSplit = input.split(" ");
+  var holdingPen = [];
   var output = [];
+  var tallyPen = [];
+  var tally = {};
+
   inputSplit.forEach(function(word){
-    if (output.indexOf(word) === -1) {
-    output.push(word);
+    if (holdingPen.indexOf(word) === -1) {
+    holdingPen.push(word);
+    tally[word] = 1;
+    } else {
+    tally[word] = tally[word] + 1;
     }
   });
+
+
+  holdingPen.forEach(function(word){
+    var wordTally = tally[word];
+    tallyPen.push(wordTally);
+  });
+
+
+  for (var i = 1000; i > 0; i--) {
+    if (tallyPen.indexOf(i) > -1){
+      while (tallyPen.indexOf(i) !== -1) {
+        var pullIndex = tallyPen.indexOf(i);
+        output.push(holdingPen[pullIndex]);
+        delete tallyPen[pullIndex];
+        delete holdingPen[pullIndex];
+      }
+    }
+  }
 
   return output;
 }
