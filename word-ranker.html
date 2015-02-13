@@ -2,15 +2,24 @@
 <html>
   <head>
     <title>Word Ranker</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <script src="js/jquery-1.11.2.js"></script>
     <script src="js/word-ranker-scripts.js"></script>
   </head>
   <body>
     <div class="container">
-      <form id="word-input">
-        <label for="word-input">Input your word here:</label>
+      <form id="input">
+        <label for="word-input">Input your text here:</label>
         <input id="word-input" type="text" placeholder="The quick brown fox jumped over the lazy dog">
 
+        <button type="submit" class="btn">Submit</button>
       </form>
+      <div class="result">
+        <p>The results are in:</p>
+        <ul>
+          <span class="output"></span>
+        </ul>
+      </div>
     </div>
   </body>
 </html>

@@ -1,6 +1,6 @@
 var wordRanker = function(input) {
   var ignoredChars = /[+-.,!@#$%^&*();/|<>"']/g;
-  var cleanedInput = input.replace(ignoredChars, "").toLowerCase();  
+  var cleanedInput = input.replace(ignoredChars, "").toLowerCase();
   var inputSplit = cleanedInput.split(" ");
   var holdingPen = [];
   var output = [];
@@ -21,7 +21,6 @@ var wordRanker = function(input) {
     tallyPen.push(wordTally);
   });
 
-
   for (var i = 1000; i > 0; i--) {
     if (tallyPen.indexOf(i) > -1){
       while (tallyPen.indexOf(i) !== -1) {
@@ -36,4 +35,18 @@ var wordRanker = function(input) {
   return output;
 }
 
-$
+$(document).ready(function() {
+  $("form#input").submit(function(event){
+    $(".result").delete();
+    var input = $("input#word-input").val();
+    var outputArray = wordRanker(input);
+
+    outputArray.forEach(function(word) {
+      $(".output").append("<li>"+word+"</li>");
+    });
+
+    $(".result").show();
+
+    event.preventDefault();
+  });
+});
