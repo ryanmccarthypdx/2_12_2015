@@ -37,15 +37,16 @@ var wordRanker = function(input) {
 
 $(document).ready(function() {
   $("form#input").submit(function(event){
-    $(".result").delete();
     var input = $("input#word-input").val();
     var outputArray = wordRanker(input);
+    $("#output").empty();
 
     outputArray.forEach(function(word) {
-      $(".output").append("<li>"+word+"</li>");
+      $("#output").append("<li>"+word+"</li>");
     });
 
     $(".result").show();
+    $("#output").show();
 
     event.preventDefault();
   });
